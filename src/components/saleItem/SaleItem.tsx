@@ -1,18 +1,15 @@
+import { NavLink } from "react-router-dom";
 import { OrderType } from "../../context/dataContext/DataContext";
+import { formatCurrency } from "../../utils/currencyFormatter/currentFormatter";
 
 export const SaleItem = ({ sale }: { sale: OrderType }) => {
   return (
     <li className="sale box">
-      <a href="" style={{ fontFamily: "monospace" }}>
+      <NavLink to={`/sales/${sale.id}`} style={{ fontFamily: "monospace" }}>
         {sale.id}
-      </a>
+      </NavLink>
       <div>{sale.nome}</div>
-      <div>
-        {sale.preco.toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })}
-      </div>
+      <div>{formatCurrency(sale.preco)}</div>
     </li>
   );
 };
