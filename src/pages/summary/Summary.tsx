@@ -1,10 +1,12 @@
+import { LoadingIndicator } from "../../components/loadingIndicator/LoadingIndicator";
+import { SalesGraph } from "../../components/salesGraph/SalesGraph";
 import {
   OrderType,
   useDataContext,
 } from "../../context/dataContext/DataContext";
 
 export const SummaryPage = () => {
-  const { data } = useDataContext();
+  const { data, loading } = useDataContext();
 
   const amountRender = (data: OrderType[], status: string) => {
     return data
@@ -13,7 +15,9 @@ export const SummaryPage = () => {
       .toLocaleString("en-US", { style: "currency", currency: "USD" });
   };
 
+  if (loading) return <LoadingIndicator />;
   if (data === null) return null;
+
   return (
     <section>
       <div className="summary flex mb">
@@ -33,7 +37,9 @@ export const SummaryPage = () => {
         </div>
       </div>
 
-      <div className="box">Gráficos</div>
+      <div className="box">
+        <SalesGraph data={data} />
+      </div>
     </section>
   );
 };
