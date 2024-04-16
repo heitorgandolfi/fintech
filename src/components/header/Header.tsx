@@ -1,9 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DateRange } from "../dateRange/DateRange";
 import { Months } from "../monthBtnSelector/months/Months";
+import { useLocation } from "react-router-dom";
 
 export const Header = () => {
-  const [title, setTitle] = useState("Summary");
+  const urlPathLocation = useLocation();
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setTitle("Summary");
+      document.title = "Fintech | Summary";
+    }
+
+    if (location.pathname === "/sales") {
+      setTitle("Sales");
+      document.title = "Fintech | Sales";
+    }
+  }, [urlPathLocation]);
 
   return (
     <header className="mb">

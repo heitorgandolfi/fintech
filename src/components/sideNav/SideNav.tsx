@@ -1,6 +1,8 @@
-import summaryIcon from "../../assets/icons/summary.svg";
-import salesIcon from "../../assets/icons/sales.svg";
+import { NavLink } from "react-router-dom";
+
 import { FintechSVG } from "../../assets/FintechSVG";
+import salesIcon from "../../assets/icons/sales.svg";
+import summaryIcon from "../../assets/icons/summary.svg";
 
 export const SideNav = () => {
   return (
@@ -11,13 +13,13 @@ export const SideNav = () => {
           <i>
             <img src={summaryIcon} alt="" />
           </i>
-          <a href="">Summary</a>
+          <NavLink to="/">Summary</NavLink>
         </li>
         <li>
           <i>
             <img src={salesIcon} alt="" />
           </i>
-          <a href="">Sales</a>
+          <NavLink to="/sales">Sales</NavLink>
         </li>
       </ul>
     </nav>
