@@ -1,7 +1,7 @@
 import { SaleItem } from "../../components/saleItem/SaleItem";
 import { useDataContext } from "../../context/dataContext/DataContext";
 
-export const Sales = () => {
+export const SalesPage = () => {
   const { data } = useDataContext();
 
   if (data === null) return null;
